@@ -29,36 +29,37 @@
         private void InitializeComponent()
         {
             pnlFormularioBase = new Panel();
-            txtId = new TextBox();
+            textBox1 = new TextBox();
             label1 = new Label();
             pnlFormularioBase.SuspendLayout();
             SuspendLayout();
             // 
             // pnlFormularioBase
             // 
-            pnlFormularioBase.Controls.Add(txtId);
+            pnlFormularioBase.Controls.Add(textBox1);
             pnlFormularioBase.Controls.Add(label1);
-            pnlFormularioBase.Dock = DockStyle.Fill;
-            pnlFormularioBase.Location = new Point(0, 0);
+            pnlFormularioBase.Location = new Point(12, 12);
             pnlFormularioBase.Name = "pnlFormularioBase";
-            pnlFormularioBase.Size = new Size(800, 450);
+            pnlFormularioBase.Size = new Size(776, 423);
             pnlFormularioBase.TabIndex = 0;
             // 
-            // txtId
+            // textBox1
             // 
-            txtId.Location = new Point(67, 25);
-            txtId.Name = "txtId";
-            txtId.Size = new Size(100, 23);
-            txtId.TabIndex = 1;
+            textBox1.Location = new Point(158, 98);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 1;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 33);
+            label1.Location = new Point(46, 101);
             label1.Name = "label1";
             label1.Size = new Size(38, 15);
             label1.TabIndex = 0;
             label1.Text = "label1";
+            
             // 
             // FrmBase
             // 
@@ -67,15 +68,16 @@
             ClientSize = new Size(800, 450);
             Controls.Add(pnlFormularioBase);
             Name = "FrmBase";
-            Text = "FrmBase";
+            Text = "Form2";
             pnlFormularioBase.ResumeLayout(false);
             pnlFormularioBase.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-        private Label label1;
-        public Panel pnlFormularioBase;
-        public TextBox txtId;
+
+        protected Panel pnlFormularioBase;
+        protected TextBox textBox1;
+        protected Label label1;
     }
 }

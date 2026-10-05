@@ -2,6 +2,8 @@
 
 namespace SistemaPresatamos.Models
 {
+    // Clase base abstracta 
+    //Centraliza los atributos comunes para los modelos
     public abstract class EntidadBase
     {
         // Atributos heredables comunes para todos los modelos
@@ -9,7 +11,7 @@ namespace SistemaPresatamos.Models
         public DateTime FechaRegistro { get; set; }
         public bool EsActivo { get; set; }
 
-        // Constructor por defecto
+        // Constructor que inicializa valores base
         protected EntidadBase()
         {
             Id = 0;
@@ -17,7 +19,7 @@ namespace SistemaPresatamos.Models
             EsActivo = true;
         }
 
-        // Constructor parametrizado
+        // Constructor parametrizado para inicializar la entidad con datos específicos
         protected EntidadBase(int id, DateTime fechaRegistro, bool esActivo)
         {
             Id = id;

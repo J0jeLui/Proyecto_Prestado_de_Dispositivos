@@ -2,6 +2,7 @@
 
 namespace SistemaPresatamos.Models
 {
+    // Interfaz que define el contrato obligatorio para las operaciones CRUD
     public interface IAlmacenamientoCRUD
     {
         void InsertarRegistro(object objeto);
@@ -10,5 +11,3 @@ namespace SistemaPresatamos.Models
         void EliminarRegistro(string id);
     }
 }
-
-

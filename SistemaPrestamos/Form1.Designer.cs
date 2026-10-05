@@ -1,4 +1,4 @@
-namespace SistemaPresatamos
+﻿namespace SistemaPresatamos
 {
     partial class Form1
     {
