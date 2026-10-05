@@ -1,14 +1,14 @@
-﻿namespace SistemaPresatamos
+namespace SistemaPresatamos
 {
     partial class Form1
     {
         /// <summary>
-        /// Required designer variable.
+        ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,8 +23,8 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -142,6 +142,11 @@
             label43 = new Label();
             label42 = new Label();
             label41 = new Label();
+            listBoxColaApartados = new ListBox();
+            btnAtender = new Button();
+            btnVaciarCola = new Button();
+            labelCantidadApartados = new Label();
+            labelSiguienteApartado = new Label();
             tabPage8 = new TabPage();
             txtResultadoReparacion = new TextBox();
             groupBox8 = new GroupBox();
@@ -173,7 +178,7 @@
             label54 = new Label();
             label53 = new Label();
             tabPage10 = new TabPage();
-            label59 = new Label();
+            txtResultadoSancion = new TextBox();
             groupBox10 = new GroupBox();
             btnGuardarSancion = new Button();
             txtRutaImagenSancion = new TextBox();
@@ -188,7 +193,9 @@
             label64 = new Label();
             label63 = new Label();
             label62 = new Label();
-            txtResultadoSancion = new TextBox();
+            label60 = new Label();
+            label61 = new Label();
+            label59 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -228,7 +235,7 @@
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(800, 450);
+            tabControl1.Size = new Size(789, 502);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -239,11 +246,10 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(792, 422);
+            tabPage1.Size = new Size(781, 474);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Administrador";
             tabPage1.UseVisualStyleBackColor = true;
-            tabPage1.Click += tabPage1_Click;
             // 
             // txtResultadoAdmin
             // 
@@ -807,14 +813,15 @@
             // 
             // txtNumeroRecreativo
             // 
-            txtNumeroRecreativo.Location = new Point(157, 49);
+            txtNumeroRecreativo.Location = new Point(157, 51);
+            txtNumeroRecreativo.MaxLength = 3;
             txtNumeroRecreativo.Name = "txtNumeroRecreativo";
             txtNumeroRecreativo.Size = new Size(100, 23);
-            txtNumeroRecreativo.TabIndex = 3;
+            txtNumeroRecreativo.TabIndex = 5;
             // 
             // txtIdRecrea
             // 
-            txtIdRecrea.Location = new Point(157, 20);
+            txtIdRecrea.Location = new Point(157, 24);
             txtIdRecrea.Name = "txtIdRecrea";
             txtIdRecrea.Size = new Size(100, 23);
             txtIdRecrea.TabIndex = 3;
@@ -822,16 +829,16 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(6, 139);
+            label26.Location = new Point(6, 145);
             label26.Name = "label26";
-            label26.Size = new Size(74, 15);
+            label26.Size = new Size(71, 15);
             label26.TabIndex = 3;
-            label26.Text = "Ruta Imagen";
+            label26.Text = "RutaImagen";
             // 
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(6, 110);
+            label25.Location = new Point(6, 115);
             label25.Name = "label25";
             label25.Size = new Size(48, 15);
             label25.TabIndex = 3;
@@ -840,7 +847,7 @@
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(6, 81);
+            label24.Location = new Point(6, 86);
             label24.Name = "label24";
             label24.Size = new Size(51, 15);
             label24.TabIndex = 3;
@@ -849,16 +856,16 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(6, 52);
+            label23.Location = new Point(6, 59);
             label23.Name = "label23";
-            label23.Size = new Size(147, 15);
-            label23.TabIndex = 3;
-            label23.Text = "Numero de Serie o Codigo";
+            label23.Size = new Size(51, 15);
+            label23.TabIndex = 4;
+            label23.Text = "Numero";
             // 
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(6, 23);
+            label22.Location = new Point(6, 32);
             label22.Name = "label22";
             label22.Size = new Size(52, 15);
             label22.TabIndex = 3;
@@ -873,16 +880,16 @@
             tabPage5.Name = "tabPage5";
             tabPage5.Size = new Size(792, 422);
             tabPage5.TabIndex = 4;
-            tabPage5.Text = "Préstamos";
+            tabPage5.Text = "Prestamo";
             tabPage5.UseVisualStyleBackColor = true;
             // 
             // txtResultadoPrestamo
             // 
-            txtResultadoPrestamo.Location = new Point(292, 42);
+            txtResultadoPrestamo.Location = new Point(383, 51);
             txtResultadoPrestamo.Multiline = true;
             txtResultadoPrestamo.Name = "txtResultadoPrestamo";
-            txtResultadoPrestamo.Size = new Size(331, 232);
-            txtResultadoPrestamo.TabIndex = 3;
+            txtResultadoPrestamo.Size = new Size(295, 188);
+            txtResultadoPrestamo.TabIndex = 2;
             // 
             // groupBox5
             // 
@@ -901,144 +908,142 @@
             groupBox5.Controls.Add(label31);
             groupBox5.Controls.Add(label30);
             groupBox5.Controls.Add(label29);
-            groupBox5.Location = new Point(8, 38);
+            groupBox5.Location = new Point(8, 41);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(278, 269);
-            groupBox5.TabIndex = 0;
+            groupBox5.Size = new Size(369, 262);
+            groupBox5.TabIndex = 1;
             groupBox5.TabStop = false;
-            groupBox5.Text = "Préstamos";
+            groupBox5.Text = "Prestamo";
             // 
             // txtIdElementoPrestamo
             // 
-            txtIdElementoPrestamo.Location = new Point(116, 75);
+            txtIdElementoPrestamo.Location = new Point(163, 63);
             txtIdElementoPrestamo.Name = "txtIdElementoPrestamo";
-            txtIdElementoPrestamo.Size = new Size(137, 23);
-            txtIdElementoPrestamo.TabIndex = 15;
+            txtIdElementoPrestamo.Size = new Size(200, 23);
+            txtIdElementoPrestamo.TabIndex = 8;
             // 
             // label35
             // 
             label35.AutoSize = true;
-            label35.Location = new Point(10, 78);
+            label35.Location = new Point(8, 71);
             label35.Name = "label35";
-            label35.Size = new Size(67, 15);
-            label35.TabIndex = 14;
-            label35.Text = "IdElemento";
+            label35.Size = new Size(118, 15);
+            label35.TabIndex = 7;
+            label35.Text = "IdMaterial/Elemento:";
             // 
             // txtIdUsuarioPrestamo
             // 
-            txtIdUsuarioPrestamo.Location = new Point(116, 46);
+            txtIdUsuarioPrestamo.Location = new Point(163, 92);
             txtIdUsuarioPrestamo.Name = "txtIdUsuarioPrestamo";
-            txtIdUsuarioPrestamo.Size = new Size(137, 23);
-            txtIdUsuarioPrestamo.TabIndex = 13;
+            txtIdUsuarioPrestamo.Size = new Size(200, 23);
+            txtIdUsuarioPrestamo.TabIndex = 6;
             // 
             // label34
             // 
             label34.AutoSize = true;
-            label34.Location = new Point(10, 49);
+            label34.Location = new Point(6, 100);
             label34.Name = "label34";
-            label34.Size = new Size(57, 15);
-            label34.TabIndex = 12;
-            label34.Text = "IdUsuario";
+            label34.Size = new Size(60, 15);
+            label34.TabIndex = 5;
+            label34.Text = "IdUsuario:";
             // 
             // btnGuardarPrestamo
             // 
-            btnGuardarPrestamo.Location = new Point(116, 235);
+            btnGuardarPrestamo.Location = new Point(221, 233);
             btnGuardarPrestamo.Name = "btnGuardarPrestamo";
-            btnGuardarPrestamo.Size = new Size(137, 23);
-            btnGuardarPrestamo.TabIndex = 11;
-            btnGuardarPrestamo.Text = "Guardar Préstamo";
+            btnGuardarPrestamo.Size = new Size(142, 23);
+            btnGuardarPrestamo.TabIndex = 4;
+            btnGuardarPrestamo.Text = "Guardar Prestamo ";
             btnGuardarPrestamo.UseVisualStyleBackColor = true;
             btnGuardarPrestamo.Click += btnGuardarPrestamo_Click;
             // 
             // chkEstadoPrestamo
             // 
             chkEstadoPrestamo.AutoSize = true;
-            chkEstadoPrestamo.Location = new Point(116, 210);
+            chkEstadoPrestamo.Location = new Point(234, 208);
             chkEstadoPrestamo.Name = "chkEstadoPrestamo";
-            chkEstadoPrestamo.Size = new Size(114, 19);
-            chkEstadoPrestamo.TabIndex = 10;
-            chkEstadoPrestamo.Text = "Estado Préstamo";
+            chkEstadoPrestamo.Size = new Size(129, 19);
+            chkEstadoPrestamo.TabIndex = 3;
+            chkEstadoPrestamo.Text = "Activo/Desactivado";
             chkEstadoPrestamo.UseVisualStyleBackColor = true;
             // 
             // dtpFechaDevolucion
             // 
-            dtpFechaDevolucion.Format = DateTimePickerFormat.Short;
-            dtpFechaDevolucion.Location = new Point(116, 140);
+            dtpFechaDevolucion.Location = new Point(163, 150);
             dtpFechaDevolucion.Name = "dtpFechaDevolucion";
-            dtpFechaDevolucion.Size = new Size(137, 23);
-            dtpFechaDevolucion.TabIndex = 9;
+            dtpFechaDevolucion.Size = new Size(200, 23);
+            dtpFechaDevolucion.TabIndex = 3;
             // 
             // dtpFechaPrestamo
             // 
-            dtpFechaPrestamo.Format = DateTimePickerFormat.Short;
-            dtpFechaPrestamo.Location = new Point(116, 108);
+            dtpFechaPrestamo.Location = new Point(163, 121);
             dtpFechaPrestamo.Name = "dtpFechaPrestamo";
-            dtpFechaPrestamo.Size = new Size(137, 23);
-            dtpFechaPrestamo.TabIndex = 8;
+            dtpFechaPrestamo.Size = new Size(200, 23);
+            dtpFechaPrestamo.TabIndex = 3;
             // 
             // txtRutaImagenPrestamo
             // 
-            txtRutaImagenPrestamo.Location = new Point(116, 172);
+            txtRutaImagenPrestamo.Location = new Point(163, 179);
             txtRutaImagenPrestamo.Name = "txtRutaImagenPrestamo";
-            txtRutaImagenPrestamo.Size = new Size(137, 23);
-            txtRutaImagenPrestamo.TabIndex = 7;
+            txtRutaImagenPrestamo.Size = new Size(200, 23);
+            txtRutaImagenPrestamo.TabIndex = 3;
             // 
             // txtIdPrestamo
             // 
-            txtIdPrestamo.Location = new Point(116, 17);
+            txtIdPrestamo.Location = new Point(163, 34);
             txtIdPrestamo.Name = "txtIdPrestamo";
-            txtIdPrestamo.Size = new Size(137, 23);
-            txtIdPrestamo.TabIndex = 6;
+            txtIdPrestamo.Size = new Size(200, 23);
+            txtIdPrestamo.TabIndex = 3;
             // 
             // label33
             // 
             label33.AutoSize = true;
-            label33.Location = new Point(10, 211);
+            label33.Location = new Point(7, 212);
             label33.Name = "label33";
-            label33.Size = new Size(42, 15);
-            label33.TabIndex = 5;
-            label33.Text = "Estado";
+            label33.Size = new Size(45, 15);
+            label33.TabIndex = 3;
+            label33.Text = "Estado:";
             // 
             // label32
             // 
             label32.AutoSize = true;
-            label32.Location = new Point(10, 175);
+            label32.Location = new Point(0, 187);
             label32.Name = "label32";
-            label32.Size = new Size(74, 15);
-            label32.TabIndex = 4;
-            label32.Text = "Ruta Imagen";
+            label32.Size = new Size(93, 15);
+            label32.TabIndex = 3;
+            label32.Text = "Ruta de Imagen:";
             // 
             // label31
             // 
             label31.AutoSize = true;
-            label31.Location = new Point(10, 146);
+            label31.Location = new Point(6, 158);
             label31.Name = "label31";
-            label31.Size = new Size(101, 15);
+            label31.Size = new Size(120, 15);
             label31.TabIndex = 3;
-            label31.Text = "Fecha Devolución";
+            label31.Text = "Fecha de Devolucion:";
             // 
             // label30
             // 
             label30.AutoSize = true;
-            label30.Location = new Point(10, 114);
+            label30.Location = new Point(6, 129);
             label30.Name = "label30";
-            label30.Size = new Size(91, 15);
-            label30.TabIndex = 2;
-            label30.Text = "Fecha Préstamo";
+            label30.Size = new Size(110, 15);
+            label30.TabIndex = 3;
+            label30.Text = "Fecha de Prestamo:";
             // 
             // label29
             // 
             label29.AutoSize = true;
-            label29.Location = new Point(10, 20);
+            label29.Location = new Point(6, 42);
             label29.Name = "label29";
-            label29.Size = new Size(67, 15);
-            label29.TabIndex = 1;
-            label29.Text = "IdPrestamo";
+            label29.Size = new Size(70, 15);
+            label29.TabIndex = 3;
+            label29.Text = "IdPrestamo:";
             // 
             // label28
             // 
             label28.AutoSize = true;
-            label28.Location = new Point(8, 0);
+            label28.Location = new Point(8, 9);
             label28.Name = "label28";
             label28.Size = new Size(506, 15);
             label28.TabIndex = 0;
@@ -1053,16 +1058,16 @@
             tabPage6.Name = "tabPage6";
             tabPage6.Size = new Size(792, 422);
             tabPage6.TabIndex = 5;
-            tabPage6.Text = "Devoluciones";
+            tabPage6.Text = "Devolucion";
             tabPage6.UseVisualStyleBackColor = true;
             // 
             // txtResultadoDevolucion
             // 
-            txtResultadoDevolucion.Location = new Point(295, 38);
+            txtResultadoDevolucion.Location = new Point(368, 44);
             txtResultadoDevolucion.Multiline = true;
             txtResultadoDevolucion.Name = "txtResultadoDevolucion";
-            txtResultadoDevolucion.Size = new Size(331, 232);
-            txtResultadoDevolucion.TabIndex = 4;
+            txtResultadoDevolucion.Size = new Size(405, 179);
+            txtResultadoDevolucion.TabIndex = 2;
             // 
             // groupBox6
             // 
@@ -1075,102 +1080,106 @@
             groupBox6.Controls.Add(label39);
             groupBox6.Controls.Add(label38);
             groupBox6.Controls.Add(label37);
-            groupBox6.Location = new Point(8, 38);
+            groupBox6.Location = new Point(8, 33);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(281, 214);
-            groupBox6.TabIndex = 0;
+            groupBox6.Size = new Size(354, 190);
+            groupBox6.TabIndex = 1;
             groupBox6.TabStop = false;
-            groupBox6.Text = "Devoluciones";
+            groupBox6.Text = "Devolucion";
             // 
             // btnGuardarDevolucion
             // 
-            btnGuardarDevolucion.Location = new Point(125, 168);
+            btnGuardarDevolucion.Location = new Point(217, 121);
             btnGuardarDevolucion.Name = "btnGuardarDevolucion";
-            btnGuardarDevolucion.Size = new Size(137, 23);
-            btnGuardarDevolucion.TabIndex = 12;
-            btnGuardarDevolucion.Text = "Guardar Devolución";
+            btnGuardarDevolucion.Size = new Size(129, 23);
+            btnGuardarDevolucion.TabIndex = 4;
+            btnGuardarDevolucion.Text = "Guardar Devolucion";
             btnGuardarDevolucion.UseVisualStyleBackColor = true;
             btnGuardarDevolucion.Click += btnGuardarDevolucion_Click;
             // 
             // chkEstadoDevolucion
             // 
             chkEstadoDevolucion.AutoSize = true;
-            chkEstadoDevolucion.Location = new Point(125, 134);
+            chkEstadoDevolucion.Location = new Point(217, 96);
             chkEstadoDevolucion.Name = "chkEstadoDevolucion";
-            chkEstadoDevolucion.Size = new Size(124, 19);
-            chkEstadoDevolucion.TabIndex = 11;
-            chkEstadoDevolucion.Text = "Estado Devolución";
+            chkEstadoDevolucion.Size = new Size(129, 19);
+            chkEstadoDevolucion.TabIndex = 3;
+            chkEstadoDevolucion.Text = "Activo/Desactivado";
             chkEstadoDevolucion.UseVisualStyleBackColor = true;
             // 
             // dtpDevolucionReal
             // 
-            dtpDevolucionReal.Format = DateTimePickerFormat.Short;
-            dtpDevolucionReal.Location = new Point(125, 59);
+            dtpDevolucionReal.Location = new Point(146, 39);
             dtpDevolucionReal.Name = "dtpDevolucionReal";
-            dtpDevolucionReal.Size = new Size(137, 23);
-            dtpDevolucionReal.TabIndex = 10;
+            dtpDevolucionReal.Size = new Size(200, 23);
+            dtpDevolucionReal.TabIndex = 2;
             // 
             // txtRutaImagenDevolucion
             // 
-            txtRutaImagenDevolucion.Location = new Point(125, 96);
+            txtRutaImagenDevolucion.Location = new Point(246, 63);
             txtRutaImagenDevolucion.Name = "txtRutaImagenDevolucion";
-            txtRutaImagenDevolucion.Size = new Size(137, 23);
-            txtRutaImagenDevolucion.TabIndex = 8;
+            txtRutaImagenDevolucion.Size = new Size(100, 23);
+            txtRutaImagenDevolucion.TabIndex = 2;
             // 
             // txtIdDevolucion
             // 
-            txtIdDevolucion.Location = new Point(125, 23);
+            txtIdDevolucion.Location = new Point(246, 11);
             txtIdDevolucion.Name = "txtIdDevolucion";
-            txtIdDevolucion.Size = new Size(137, 23);
-            txtIdDevolucion.TabIndex = 7;
+            txtIdDevolucion.Size = new Size(100, 23);
+            txtIdDevolucion.TabIndex = 2;
             // 
             // label40
             // 
             label40.AutoSize = true;
-            label40.Location = new Point(6, 135);
+            label40.Location = new Point(6, 97);
             label40.Name = "label40";
             label40.Size = new Size(42, 15);
-            label40.TabIndex = 6;
+            label40.TabIndex = 2;
             label40.Text = "Estado";
             // 
             // label39
             // 
             label39.AutoSize = true;
-            label39.Location = new Point(6, 99);
+            label39.Location = new Point(6, 71);
             label39.Name = "label39";
             label39.Size = new Size(74, 15);
-            label39.TabIndex = 5;
+            label39.TabIndex = 2;
             label39.Text = "Ruta Imagen";
             // 
             // label38
             // 
             label38.AutoSize = true;
-            label38.Location = new Point(6, 65);
+            label38.Location = new Point(6, 45);
             label38.Name = "label38";
-            label38.Size = new Size(126, 15);
-            label38.TabIndex = 4;
-            label38.Text = "Fecha Devolución Real";
+            label38.Size = new Size(92, 15);
+            label38.TabIndex = 2;
+            label38.Text = "Devolucion Real";
             // 
             // label37
             // 
             label37.AutoSize = true;
-            label37.Location = new Point(6, 26);
+            label37.Location = new Point(6, 19);
             label37.Name = "label37";
             label37.Size = new Size(77, 15);
             label37.TabIndex = 2;
-            label37.Text = "IdDevolución";
+            label37.Text = "IdDevolucion";
             // 
             // label36
             // 
             label36.AutoSize = true;
-            label36.Location = new Point(14, 0);
+            label36.Location = new Point(8, 0);
             label36.Name = "label36";
             label36.Size = new Size(506, 15);
-            label36.TabIndex = 1;
+            label36.TabIndex = 0;
             label36.Text = "Equipo 4 Fernández Hernández Kevin Isaid, Flores Becerra Cid Héctor, Govea Mijares Jorge Luis ";
             // 
             // tabPage7
             // 
+            tabPage7.Controls.Add(listBoxColaApartados);
+            tabPage7.Controls.Add(btnAtender);
+            tabPage7.Controls.Add(btnVaciarCola);
+            tabPage7.Controls.Add(labelSiguienteApartado);
+            tabPage7.Controls.Add(labelCantidadApartados);
             tabPage7.Controls.Add(txtResultadoApartado);
             tabPage7.Controls.Add(groupBox7);
             tabPage7.Controls.Add(label41);
@@ -1178,16 +1187,16 @@
             tabPage7.Name = "tabPage7";
             tabPage7.Size = new Size(792, 422);
             tabPage7.TabIndex = 6;
-            tabPage7.Text = "Apartados";
+            tabPage7.Text = "Apartado";
             tabPage7.UseVisualStyleBackColor = true;
             // 
             // txtResultadoApartado
             // 
-            txtResultadoApartado.Location = new Point(297, 38);
+            txtResultadoApartado.Location = new Point(342, 46);
             txtResultadoApartado.Multiline = true;
             txtResultadoApartado.Name = "txtResultadoApartado";
-            txtResultadoApartado.Size = new Size(331, 232);
-            txtResultadoApartado.TabIndex = 5;
+            txtResultadoApartado.Size = new Size(304, 155);
+            txtResultadoApartado.TabIndex = 2;
             // 
             // groupBox7
             // 
@@ -1202,103 +1211,103 @@
             groupBox7.Controls.Add(label44);
             groupBox7.Controls.Add(label43);
             groupBox7.Controls.Add(label42);
-            groupBox7.Location = new Point(8, 38);
+            groupBox7.Location = new Point(8, 35);
             groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(283, 226);
-            groupBox7.TabIndex = 0;
+            groupBox7.Size = new Size(334, 187);
+            groupBox7.TabIndex = 1;
             groupBox7.TabStop = false;
-            groupBox7.Text = "Apartados";
+            groupBox7.Text = "Apartado";
             // 
             // btnGuardarApartado
             // 
-            btnGuardarApartado.Location = new Point(119, 182);
+            btnGuardarApartado.Location = new Point(166, 149);
             btnGuardarApartado.Name = "btnGuardarApartado";
-            btnGuardarApartado.Size = new Size(137, 23);
-            btnGuardarApartado.TabIndex = 13;
-            btnGuardarApartado.Text = "Guardar Apartado";
+            btnGuardarApartado.Size = new Size(162, 23);
+            btnGuardarApartado.TabIndex = 7;
+            btnGuardarApartado.Text = "Encolar apartado";
             btnGuardarApartado.UseVisualStyleBackColor = true;
             btnGuardarApartado.Click += btnGuardarApartado_Click;
             // 
             // chkEstadoApartado
             // 
             chkEstadoApartado.AutoSize = true;
-            chkEstadoApartado.Location = new Point(119, 148);
+            chkEstadoApartado.Location = new Point(166, 124);
             chkEstadoApartado.Name = "chkEstadoApartado";
-            chkEstadoApartado.Size = new Size(113, 19);
-            chkEstadoApartado.TabIndex = 12;
-            chkEstadoApartado.Text = "Estado Apartado";
+            chkEstadoApartado.Size = new Size(162, 19);
+            chkEstadoApartado.TabIndex = 6;
+            chkEstadoApartado.Text = "Disponible/No Disponible";
             chkEstadoApartado.UseVisualStyleBackColor = true;
+            chkEstadoApartado.Visible = false;
             // 
             // txtRutaImagenApartado
             // 
-            txtRutaImagenApartado.Location = new Point(119, 114);
+            txtRutaImagenApartado.Location = new Point(228, 95);
             txtRutaImagenApartado.Name = "txtRutaImagenApartado";
-            txtRutaImagenApartado.Size = new Size(137, 23);
-            txtRutaImagenApartado.TabIndex = 11;
+            txtRutaImagenApartado.Size = new Size(100, 23);
+            txtRutaImagenApartado.TabIndex = 5;
             // 
             // dtpFechaReserva
             // 
-            dtpFechaReserva.Format = DateTimePickerFormat.Short;
-            dtpFechaReserva.Location = new Point(119, 81);
+            dtpFechaReserva.Location = new Point(128, 69);
             dtpFechaReserva.Name = "dtpFechaReserva";
-            dtpFechaReserva.Size = new Size(137, 23);
-            dtpFechaReserva.TabIndex = 10;
+            dtpFechaReserva.Size = new Size(200, 23);
+            dtpFechaReserva.TabIndex = 4;
             // 
             // dtpFechaSolicitud
             // 
-            dtpFechaSolicitud.Format = DateTimePickerFormat.Short;
-            dtpFechaSolicitud.Location = new Point(119, 49);
+            dtpFechaSolicitud.Location = new Point(128, 43);
             dtpFechaSolicitud.Name = "dtpFechaSolicitud";
-            dtpFechaSolicitud.Size = new Size(137, 23);
-            dtpFechaSolicitud.TabIndex = 9;
+            dtpFechaSolicitud.Size = new Size(200, 23);
+            dtpFechaSolicitud.TabIndex = 3;
             // 
             // txtIdApartado
             // 
-            txtIdApartado.Location = new Point(119, 18);
+            txtIdApartado.Location = new Point(228, 14);
+            txtIdApartado.MaxLength = 9;
             txtIdApartado.Name = "txtIdApartado";
-            txtIdApartado.Size = new Size(137, 23);
-            txtIdApartado.TabIndex = 8;
+            txtIdApartado.Size = new Size(100, 23);
+            txtIdApartado.TabIndex = 3;
             // 
             // label46
             // 
             label46.AutoSize = true;
-            label46.Location = new Point(10, 149);
+            label46.Location = new Point(6, 128);
             label46.Name = "label46";
             label46.Size = new Size(42, 15);
-            label46.TabIndex = 7;
+            label46.TabIndex = 3;
             label46.Text = "Estado";
             // 
             // label45
             // 
             label45.AutoSize = true;
-            label45.Location = new Point(10, 117);
+            label45.Location = new Point(6, 98);
             label45.Name = "label45";
-            label45.Size = new Size(74, 15);
-            label45.TabIndex = 6;
-            label45.Text = "Ruta Imagen";
+            label45.Size = new Size(90, 15);
+            label45.TabIndex = 3;
+            label45.Text = "Ruta de Imagen";
             // 
             // label44
             // 
             label44.AutoSize = true;
-            label44.Location = new Point(10, 87);
+            label44.Location = new Point(6, 69);
             label44.Name = "label44";
-            label44.Size = new Size(81, 15);
-            label44.TabIndex = 5;
-            label44.Text = "Fecha Reserva";
+            label44.Size = new Size(97, 15);
+            label44.TabIndex = 3;
+            label44.Text = "Fecha de Reserva";
             // 
             // label43
             // 
             label43.AutoSize = true;
-            label43.Location = new Point(10, 55);
+            label43.Location = new Point(6, 43);
             label43.Name = "label43";
-            label43.Size = new Size(87, 15);
-            label43.TabIndex = 4;
-            label43.Text = "Fecha Solicitud";
+            label43.Size = new Size(103, 15);
+            label43.TabIndex = 3;
+            label43.Text = "Fecha de Solicitud";
             // 
             // label42
             // 
             label42.AutoSize = true;
-            label42.Location = new Point(10, 21);
+            label42.Location = new Point(6, 19);
             label42.Name = "label42";
             label42.Size = new Size(66, 15);
             label42.TabIndex = 3;
@@ -1307,11 +1316,60 @@
             // label41
             // 
             label41.AutoSize = true;
-            label41.Location = new Point(8, 0);
+            label41.Location = new Point(3, 0);
             label41.Name = "label41";
             label41.Size = new Size(506, 15);
-            label41.TabIndex = 2;
+            label41.TabIndex = 0;
             label41.Text = "Equipo 4 Fernández Hernández Kevin Isaid, Flores Becerra Cid Héctor, Govea Mijares Jorge Luis ";
+            // 
+            // listBoxColaApartados
+            // 
+            listBoxColaApartados.FormattingEnabled = true;
+            listBoxColaApartados.ItemHeight = 15;
+            listBoxColaApartados.Location = new Point(342, 244);
+            listBoxColaApartados.Name = "listBoxColaApartados";
+            listBoxColaApartados.Size = new Size(430, 139);
+            listBoxColaApartados.TabIndex = 3;
+            // 
+            // btnAtender
+            // 
+            btnAtender.Enabled = false;
+            btnAtender.Location = new Point(500, 388);
+            btnAtender.Name = "btnAtender";
+            btnAtender.Size = new Size(140, 27);
+            btnAtender.TabIndex = 4;
+            btnAtender.Text = "Atender Siguiente";
+            btnAtender.UseVisualStyleBackColor = true;
+            btnAtender.Click += btnAtender_Click;
+            // 
+            // btnVaciarCola
+            // 
+            btnVaciarCola.Enabled = false;
+            btnVaciarCola.Location = new Point(650, 388);
+            btnVaciarCola.Name = "btnVaciarCola";
+            btnVaciarCola.Size = new Size(122, 27);
+            btnVaciarCola.TabIndex = 7;
+            btnVaciarCola.Text = "Vaciar cola";
+            btnVaciarCola.UseVisualStyleBackColor = true;
+            btnVaciarCola.Click += btnVaciarCola_Click;
+            // 
+            // labelCantidadApartados
+            // 
+            labelCantidadApartados.AutoSize = true;
+            labelCantidadApartados.Location = new Point(342, 211);
+            labelCantidadApartados.Name = "labelCantidadApartados";
+            labelCantidadApartados.Size = new Size(83, 15);
+            labelCantidadApartados.TabIndex = 5;
+            labelCantidadApartados.Text = "En espera: 0";
+            // 
+            // labelSiguienteApartado
+            // 
+            labelSiguienteApartado.AutoSize = true;
+            labelSiguienteApartado.Location = new Point(342, 228);
+            labelSiguienteApartado.Name = "labelSiguienteApartado";
+            labelSiguienteApartado.Size = new Size(165, 15);
+            labelSiguienteApartado.TabIndex = 6;
+            labelSiguienteApartado.Text = "Siguiente en ser atendido: ninguno";
             // 
             // tabPage8
             // 
@@ -1322,16 +1380,16 @@
             tabPage8.Name = "tabPage8";
             tabPage8.Size = new Size(792, 422);
             tabPage8.TabIndex = 7;
-            tabPage8.Text = "Reparaciones";
+            tabPage8.Text = "Reparacion";
             tabPage8.UseVisualStyleBackColor = true;
             // 
             // txtResultadoReparacion
             // 
-            txtResultadoReparacion.Location = new Point(296, 37);
+            txtResultadoReparacion.Location = new Point(288, 39);
             txtResultadoReparacion.Multiline = true;
             txtResultadoReparacion.Name = "txtResultadoReparacion";
-            txtResultadoReparacion.Size = new Size(331, 232);
-            txtResultadoReparacion.TabIndex = 6;
+            txtResultadoReparacion.Size = new Size(315, 181);
+            txtResultadoReparacion.TabIndex = 2;
             // 
             // groupBox8
             // 
@@ -1346,114 +1404,114 @@
             groupBox8.Controls.Add(label51);
             groupBox8.Controls.Add(label49);
             groupBox8.Controls.Add(label50);
-            groupBox8.Location = new Point(8, 38);
+            groupBox8.Location = new Point(8, 28);
             groupBox8.Name = "groupBox8";
-            groupBox8.Size = new Size(282, 231);
-            groupBox8.TabIndex = 0;
+            groupBox8.Size = new Size(274, 192);
+            groupBox8.TabIndex = 1;
             groupBox8.TabStop = false;
-            groupBox8.Text = "Reparaciones";
+            groupBox8.Text = "Reparacion";
             // 
             // btnGuardarReparacion
             // 
-            btnGuardarReparacion.Location = new Point(122, 186);
+            btnGuardarReparacion.Location = new Point(135, 150);
             btnGuardarReparacion.Name = "btnGuardarReparacion";
-            btnGuardarReparacion.Size = new Size(137, 23);
-            btnGuardarReparacion.TabIndex = 14;
-            btnGuardarReparacion.Text = "Guardar Reparación";
+            btnGuardarReparacion.Size = new Size(133, 23);
+            btnGuardarReparacion.TabIndex = 3;
+            btnGuardarReparacion.Text = "Reparacion";
             btnGuardarReparacion.UseVisualStyleBackColor = true;
             btnGuardarReparacion.Click += btnGuardarReparacion_Click;
             // 
             // chkEstadoReparacion
             // 
             chkEstadoReparacion.AutoSize = true;
-            chkEstadoReparacion.Location = new Point(122, 151);
+            chkEstadoReparacion.Location = new Point(186, 125);
             chkEstadoReparacion.Name = "chkEstadoReparacion";
-            chkEstadoReparacion.Size = new Size(123, 19);
-            chkEstadoReparacion.TabIndex = 13;
-            chkEstadoReparacion.Text = "Estado Reparación";
+            chkEstadoReparacion.Size = new Size(84, 19);
+            chkEstadoReparacion.TabIndex = 2;
+            chkEstadoReparacion.Text = "En proceso";
             chkEstadoReparacion.UseVisualStyleBackColor = true;
             // 
             // txtRutaImagenReparacion
             // 
-            txtRutaImagenReparacion.Location = new Point(122, 116);
+            txtRutaImagenReparacion.Location = new Point(168, 92);
             txtRutaImagenReparacion.Name = "txtRutaImagenReparacion";
-            txtRutaImagenReparacion.Size = new Size(137, 23);
-            txtRutaImagenReparacion.TabIndex = 12;
+            txtRutaImagenReparacion.Size = new Size(100, 23);
+            txtRutaImagenReparacion.TabIndex = 2;
             // 
             // dtpFechaReparacion
             // 
-            dtpFechaReparacion.Format = DateTimePickerFormat.Short;
-            dtpFechaReparacion.Location = new Point(122, 83);
+            dtpFechaReparacion.Location = new Point(68, 65);
             dtpFechaReparacion.Name = "dtpFechaReparacion";
-            dtpFechaReparacion.Size = new Size(137, 23);
-            dtpFechaReparacion.TabIndex = 11;
+            dtpFechaReparacion.Size = new Size(200, 23);
+            dtpFechaReparacion.TabIndex = 2;
             // 
             // txtMaterialReparacion
             // 
-            txtMaterialReparacion.Location = new Point(122, 50);
+            txtMaterialReparacion.Location = new Point(168, 36);
             txtMaterialReparacion.Name = "txtMaterialReparacion";
-            txtMaterialReparacion.Size = new Size(137, 23);
-            txtMaterialReparacion.TabIndex = 10;
+            txtMaterialReparacion.Size = new Size(100, 23);
+            txtMaterialReparacion.TabIndex = 2;
             // 
             // txtIdReparacion
             // 
-            txtIdReparacion.Location = new Point(122, 17);
+            txtIdReparacion.Location = new Point(168, 11);
+            txtIdReparacion.MaxLength = 9;
             txtIdReparacion.Name = "txtIdReparacion";
-            txtIdReparacion.Size = new Size(137, 23);
-            txtIdReparacion.TabIndex = 9;
+            txtIdReparacion.Size = new Size(100, 23);
+            txtIdReparacion.TabIndex = 2;
             // 
             // label52
             // 
             label52.AutoSize = true;
-            label52.Location = new Point(6, 152);
+            label52.Location = new Point(6, 129);
             label52.Name = "label52";
             label52.Size = new Size(42, 15);
-            label52.TabIndex = 8;
+            label52.TabIndex = 6;
             label52.Text = "Estado";
             // 
             // label48
             // 
             label48.AutoSize = true;
-            label48.Location = new Point(6, 20);
+            label48.Location = new Point(6, 19);
             label48.Name = "label48";
             label48.Size = new Size(76, 15);
-            label48.TabIndex = 4;
-            label48.Text = "IdReparación";
+            label48.TabIndex = 2;
+            label48.Text = "IdReparacion";
             // 
             // label51
             // 
             label51.AutoSize = true;
-            label51.Location = new Point(6, 119);
+            label51.Location = new Point(6, 100);
             label51.Name = "label51";
-            label51.Size = new Size(74, 15);
-            label51.TabIndex = 7;
-            label51.Text = "Ruta Imagen";
+            label51.Size = new Size(71, 15);
+            label51.TabIndex = 5;
+            label51.Text = "RutaImagen";
             // 
             // label49
             // 
             label49.AutoSize = true;
-            label49.Location = new Point(6, 53);
+            label49.Location = new Point(6, 44);
             label49.Name = "label49";
-            label49.Size = new Size(112, 15);
-            label49.TabIndex = 5;
-            label49.Text = "Material Reparación";
+            label49.Size = new Size(50, 15);
+            label49.TabIndex = 3;
+            label49.Text = "Material";
             // 
             // label50
             // 
             label50.AutoSize = true;
-            label50.Location = new Point(6, 89);
+            label50.Location = new Point(6, 71);
             label50.Name = "label50";
-            label50.Size = new Size(100, 15);
-            label50.TabIndex = 6;
-            label50.Text = "Fecha Reparación";
+            label50.Size = new Size(38, 15);
+            label50.TabIndex = 4;
+            label50.Text = "Fecha";
             // 
             // label47
             // 
             label47.AutoSize = true;
-            label47.Location = new Point(14, 0);
+            label47.Location = new Point(3, 0);
             label47.Name = "label47";
             label47.Size = new Size(506, 15);
-            label47.TabIndex = 3;
+            label47.TabIndex = 0;
             label47.Text = "Equipo 4 Fernández Hernández Kevin Isaid, Flores Becerra Cid Héctor, Govea Mijares Jorge Luis ";
             // 
             // tabPage9
@@ -1465,16 +1523,16 @@
             tabPage9.Name = "tabPage9";
             tabPage9.Size = new Size(792, 422);
             tabPage9.TabIndex = 8;
-            tabPage9.Text = "Ubicaciones";
+            tabPage9.Text = "Ubicacion";
             tabPage9.UseVisualStyleBackColor = true;
             // 
             // txtResultadoUbicacion
             // 
-            txtResultadoUbicacion.Location = new Point(292, 38);
+            txtResultadoUbicacion.Location = new Point(385, 40);
             txtResultadoUbicacion.Multiline = true;
             txtResultadoUbicacion.Name = "txtResultadoUbicacion";
-            txtResultadoUbicacion.Size = new Size(331, 232);
-            txtResultadoUbicacion.TabIndex = 7;
+            txtResultadoUbicacion.Size = new Size(379, 205);
+            txtResultadoUbicacion.TabIndex = 2;
             // 
             // groupBox9
             // 
@@ -1489,104 +1547,106 @@
             groupBox9.Controls.Add(label56);
             groupBox9.Controls.Add(label55);
             groupBox9.Controls.Add(label54);
-            groupBox9.Location = new Point(8, 38);
+            groupBox9.Location = new Point(8, 29);
             groupBox9.Name = "groupBox9";
-            groupBox9.Size = new Size(278, 231);
-            groupBox9.TabIndex = 0;
+            groupBox9.Size = new Size(282, 216);
+            groupBox9.TabIndex = 1;
             groupBox9.TabStop = false;
-            groupBox9.Text = "Ubicaciones";
+            groupBox9.Text = "Ubicacion";
             // 
             // button1
             // 
-            button1.Location = new Point(116, 185);
+            button1.Location = new Point(124, 167);
             button1.Name = "button1";
-            button1.Size = new Size(137, 23);
-            button1.TabIndex = 15;
-            button1.Text = "Guardar Ubicación";
+            button1.Size = new Size(152, 23);
+            button1.TabIndex = 8;
+            button1.Text = "Cargar ubicacion";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // chkEstadoUbicacion
             // 
             chkEstadoUbicacion.AutoSize = true;
-            chkEstadoUbicacion.Location = new Point(116, 151);
+            chkEstadoUbicacion.Location = new Point(180, 133);
             chkEstadoUbicacion.Name = "chkEstadoUbicacion";
-            chkEstadoUbicacion.Size = new Size(117, 19);
-            chkEstadoUbicacion.TabIndex = 14;
-            chkEstadoUbicacion.Text = "Estado Ubicación";
+            chkEstadoUbicacion.Size = new Size(96, 19);
+            chkEstadoUbicacion.TabIndex = 7;
+            chkEstadoUbicacion.Text = "Dentro/Fuera";
             chkEstadoUbicacion.UseVisualStyleBackColor = true;
             // 
             // txtRutaImagenUbicacion
             // 
-            txtRutaImagenUbicacion.Location = new Point(116, 116);
+            txtRutaImagenUbicacion.Location = new Point(176, 94);
             txtRutaImagenUbicacion.Name = "txtRutaImagenUbicacion";
-            txtRutaImagenUbicacion.Size = new Size(137, 23);
-            txtRutaImagenUbicacion.TabIndex = 13;
+            txtRutaImagenUbicacion.Size = new Size(100, 23);
+            txtRutaImagenUbicacion.TabIndex = 6;
             // 
             // txtAlmacen
             // 
-            txtAlmacen.Location = new Point(116, 83);
+            txtAlmacen.Location = new Point(176, 65);
             txtAlmacen.Name = "txtAlmacen";
-            txtAlmacen.Size = new Size(137, 23);
-            txtAlmacen.TabIndex = 12;
+            txtAlmacen.Size = new Size(100, 23);
+            txtAlmacen.TabIndex = 5;
             // 
             // txtEdificio
             // 
-            txtEdificio.Location = new Point(116, 50);
+            txtEdificio.Location = new Point(176, 42);
             txtEdificio.Name = "txtEdificio";
-            txtEdificio.Size = new Size(137, 23);
-            txtEdificio.TabIndex = 11;
+            txtEdificio.Size = new Size(100, 23);
+            txtEdificio.TabIndex = 4;
             // 
             // txtIdUbicacion
             // 
-            txtIdUbicacion.Location = new Point(116, 17);
+            txtIdUbicacion.Location = new Point(176, 16);
+            txtIdUbicacion.MaxLength = 9;
             txtIdUbicacion.Name = "txtIdUbicacion";
-            txtIdUbicacion.Size = new Size(137, 23);
-            txtIdUbicacion.TabIndex = 10;
+            txtIdUbicacion.Size = new Size(100, 23);
+            txtIdUbicacion.TabIndex = 3;
             // 
             // label58
             // 
             label58.AutoSize = true;
-            label58.Location = new Point(6, 152);
+            label58.Location = new Point(6, 134);
             label58.Name = "label58";
             label58.Size = new Size(42, 15);
-            label58.TabIndex = 9;
+            label58.TabIndex = 3;
             label58.Text = "Estado";
             // 
             // label57
             // 
             label57.AutoSize = true;
-            label57.Location = new Point(6, 119);
+            label57.Location = new Point(6, 103);
             label57.Name = "label57";
-            label57.Size = new Size(74, 15);
-            label57.TabIndex = 8;
-            label57.Text = "Ruta Imagen";
+            label57.Size = new Size(90, 15);
+            label57.TabIndex = 3;
+            label57.Text = "Ruta de Imagen";
             // 
             // label56
             // 
             label56.AutoSize = true;
-            label56.Location = new Point(6, 86);
+            label56.Location = new Point(6, 73);
             label56.Name = "label56";
             label56.Size = new Size(54, 15);
-            label56.TabIndex = 7;
-            label56.Text = "Almacén";
+            label56.TabIndex = 3;
+            label56.Text = "Almacen";
             // 
             // label55
             // 
             label55.AutoSize = true;
-            label55.Location = new Point(6, 53);
+            label55.Location = new Point(6, 45);
             label55.Name = "label55";
             label55.Size = new Size(46, 15);
-            label55.TabIndex = 6;
+            label55.TabIndex = 3;
             label55.Text = "Edificio";
             // 
             // label54
             // 
             label54.AutoSize = true;
-            label54.Location = new Point(6, 20);
+            label54.Location = new Point(6, 19);
             label54.Name = "label54";
             label54.Size = new Size(70, 15);
-            label54.TabIndex = 5;
-            label54.Text = "IdUbicación";
+            label54.TabIndex = 3;
+            label54.Text = "IdUbicacion";
             // 
             // label53
             // 
@@ -1594,29 +1654,28 @@
             label53.Location = new Point(8, 0);
             label53.Name = "label53";
             label53.Size = new Size(506, 15);
-            label53.TabIndex = 4;
+            label53.TabIndex = 0;
             label53.Text = "Equipo 4 Fernández Hernández Kevin Isaid, Flores Becerra Cid Héctor, Govea Mijares Jorge Luis ";
             // 
             // tabPage10
             // 
-            tabPage10.Controls.Add(label59);
-            tabPage10.Controls.Add(groupBox10);
             tabPage10.Controls.Add(txtResultadoSancion);
+            tabPage10.Controls.Add(groupBox10);
+            tabPage10.Controls.Add(label59);
             tabPage10.Location = new Point(4, 24);
             tabPage10.Name = "tabPage10";
             tabPage10.Size = new Size(792, 422);
             tabPage10.TabIndex = 9;
-            tabPage10.Text = "Sanciones";
+            tabPage10.Text = "Sancion";
             tabPage10.UseVisualStyleBackColor = true;
             // 
-            // label59
+            // txtResultadoSancion
             // 
-            label59.AutoSize = true;
-            label59.Location = new Point(6, 3);
-            label59.Name = "label59";
-            label59.Size = new Size(506, 15);
-            label59.TabIndex = 5;
-            label59.Text = "Equipo 4 Fernández Hernández Kevin Isaid, Flores Becerra Cid Héctor, Govea Mijares Jorge Luis ";
+            txtResultadoSancion.Location = new Point(300, 43);
+            txtResultadoSancion.Multiline = true;
+            txtResultadoSancion.Name = "txtResultadoSancion";
+            txtResultadoSancion.Size = new Size(392, 252);
+            txtResultadoSancion.TabIndex = 4;
             // 
             // groupBox10
             // 
@@ -1633,137 +1692,162 @@
             groupBox10.Controls.Add(label64);
             groupBox10.Controls.Add(label63);
             groupBox10.Controls.Add(label62);
-            groupBox10.Location = new Point(8, 38);
+            groupBox10.Controls.Add(label60);
+            groupBox10.Controls.Add(label61);
+            groupBox10.Location = new Point(8, 32);
             groupBox10.Name = "groupBox10";
-            groupBox10.Size = new Size(278, 280);
-            groupBox10.TabIndex = 0;
+            groupBox10.Size = new Size(286, 263);
+            groupBox10.TabIndex = 3;
             groupBox10.TabStop = false;
-            groupBox10.Text = "Sanciones";
+            groupBox10.Text = "Sancion";
             // 
             // btnGuardarSancion
             // 
-            btnGuardarSancion.Location = new Point(116, 235);
+            btnGuardarSancion.Location = new Point(126, 215);
             btnGuardarSancion.Name = "btnGuardarSancion";
-            btnGuardarSancion.Size = new Size(137, 23);
-            btnGuardarSancion.TabIndex = 19;
-            btnGuardarSancion.Text = "Guardar Sanción";
+            btnGuardarSancion.Size = new Size(146, 23);
+            btnGuardarSancion.TabIndex = 5;
+            btnGuardarSancion.Text = "Guardar la Sancion";
             btnGuardarSancion.UseVisualStyleBackColor = true;
             btnGuardarSancion.Click += btnGuardarSancion_Click;
             // 
             // txtRutaImagenSancion
             // 
-            txtRutaImagenSancion.Location = new Point(116, 149);
+            txtRutaImagenSancion.Location = new Point(180, 131);
             txtRutaImagenSancion.Name = "txtRutaImagenSancion";
-            txtRutaImagenSancion.Size = new Size(137, 23);
-            txtRutaImagenSancion.TabIndex = 18;
+            txtRutaImagenSancion.Size = new Size(100, 23);
+            txtRutaImagenSancion.TabIndex = 5;
             // 
             // label66
             // 
             label66.AutoSize = true;
-            label66.Location = new Point(6, 152);
+            label66.Location = new Point(7, 194);
             label66.Name = "label66";
-            label66.Size = new Size(74, 15);
-            label66.TabIndex = 17;
-            label66.Text = "Ruta Imagen";
+            label66.Size = new Size(42, 15);
+            label66.TabIndex = 5;
+            label66.Text = "Estado";
             // 
             // chkEstadoSancion
             // 
             chkEstadoSancion.AutoSize = true;
-            chkEstadoSancion.Location = new Point(116, 206);
+            chkEstadoSancion.Location = new Point(198, 190);
             chkEstadoSancion.Name = "chkEstadoSancion";
-            chkEstadoSancion.Size = new Size(106, 19);
-            chkEstadoSancion.TabIndex = 16;
-            chkEstadoSancion.Text = "Estado Sanción";
+            chkEstadoSancion.Size = new Size(74, 19);
+            chkEstadoSancion.TabIndex = 4;
+            chkEstadoSancion.Text = "Negativo";
             chkEstadoSancion.UseVisualStyleBackColor = true;
             // 
             // chkActivaPagada
             // 
             chkActivaPagada.AutoSize = true;
-            chkActivaPagada.Location = new Point(116, 181);
+            chkActivaPagada.Location = new Point(155, 157);
             chkActivaPagada.Name = "chkActivaPagada";
-            chkActivaPagada.Size = new Size(103, 19);
-            chkActivaPagada.TabIndex = 15;
-            chkActivaPagada.Text = "Activa/Pagada";
+            chkActivaPagada.Size = new Size(125, 19);
+            chkActivaPagada.TabIndex = 4;
+            chkActivaPagada.Text = "Activada/Apagado";
             chkActivaPagada.UseVisualStyleBackColor = true;
             // 
             // txtReporteSancion
             // 
-            txtReporteSancion.Location = new Point(116, 116);
+            txtReporteSancion.Location = new Point(180, 93);
             txtReporteSancion.Name = "txtReporteSancion";
-            txtReporteSancion.Size = new Size(137, 23);
-            txtReporteSancion.TabIndex = 14;
+            txtReporteSancion.Size = new Size(100, 23);
+            txtReporteSancion.TabIndex = 4;
             // 
             // txtMontoSancion
             // 
-            txtMontoSancion.Location = new Point(116, 83);
+            txtMontoSancion.Location = new Point(180, 67);
             txtMontoSancion.Name = "txtMontoSancion";
-            txtMontoSancion.Size = new Size(137, 23);
-            txtMontoSancion.TabIndex = 13;
+            txtMontoSancion.Size = new Size(100, 23);
+            txtMontoSancion.TabIndex = 4;
             // 
             // txtMotivoSancion
             // 
-            txtMotivoSancion.Location = new Point(116, 50);
+            txtMotivoSancion.Location = new Point(180, 38);
             txtMotivoSancion.Name = "txtMotivoSancion";
-            txtMotivoSancion.Size = new Size(137, 23);
-            txtMotivoSancion.TabIndex = 12;
+            txtMotivoSancion.Size = new Size(100, 23);
+            txtMotivoSancion.TabIndex = 4;
             // 
             // txtIdSancion
             // 
-            txtIdSancion.Location = new Point(116, 17);
+            txtIdSancion.Location = new Point(180, 11);
+            txtIdSancion.MaxLength = 9;
             txtIdSancion.Name = "txtIdSancion";
-            txtIdSancion.Size = new Size(137, 23);
-            txtIdSancion.TabIndex = 11;
+            txtIdSancion.Size = new Size(100, 23);
+            txtIdSancion.TabIndex = 4;
             // 
             // label65
             // 
             label65.AutoSize = true;
-            label65.Location = new Point(6, 119);
+            label65.Location = new Point(5, 161);
             label65.Name = "label65";
-            label65.Size = new Size(48, 15);
-            label65.TabIndex = 9;
-            label65.Text = "Reporte";
+            label65.Size = new Size(42, 15);
+            label65.TabIndex = 4;
+            label65.Text = "Estado";
             // 
             // label64
             // 
             label64.AutoSize = true;
-            label64.Location = new Point(6, 86);
+            label64.Location = new Point(6, 129);
             label64.Name = "label64";
-            label64.Size = new Size(43, 15);
-            label64.TabIndex = 8;
-            label64.Text = "Monto";
+            label64.Size = new Size(71, 15);
+            label64.TabIndex = 4;
+            label64.Text = "RutaImagen";
             // 
             // label63
             // 
             label63.AutoSize = true;
-            label63.Location = new Point(6, 53);
+            label63.Location = new Point(6, 101);
             label63.Name = "label63";
-            label63.Size = new Size(45, 15);
-            label63.TabIndex = 7;
-            label63.Text = "Motivo";
+            label63.Size = new Size(48, 15);
+            label63.TabIndex = 4;
+            label63.Text = "Reporte";
             // 
             // label62
             // 
             label62.AutoSize = true;
-            label62.Location = new Point(6, 20);
+            label62.Location = new Point(6, 75);
             label62.Name = "label62";
-            label62.Size = new Size(59, 15);
-            label62.TabIndex = 6;
-            label62.Text = "IdSanción";
+            label62.Size = new Size(43, 15);
+            label62.TabIndex = 4;
+            label62.Text = "Monto";
             // 
-            // txtResultadoSancion
+            // label60
             // 
-            txtResultadoSancion.Location = new Point(292, 38);
-            txtResultadoSancion.Multiline = true;
-            txtResultadoSancion.Name = "txtResultadoSancion";
-            txtResultadoSancion.Size = new Size(331, 232);
-            txtResultadoSancion.TabIndex = 8;
+            label60.AutoSize = true;
+            label60.Location = new Point(6, 19);
+            label60.Name = "label60";
+            label60.Size = new Size(59, 15);
+            label60.TabIndex = 1;
+            label60.Text = "IdSancion";
+            // 
+            // label61
+            // 
+            label61.AutoSize = true;
+            label61.Location = new Point(6, 46);
+            label61.Name = "label61";
+            label61.Size = new Size(45, 15);
+            label61.TabIndex = 2;
+            label61.Text = "Motivo";
+            // 
+            // label59
+            // 
+            label59.AutoSize = true;
+            label59.Location = new Point(8, 0);
+            label59.Name = "label59";
+            label59.Size = new Size(506, 15);
+            label59.TabIndex = 0;
+            label59.Text = "Equipo 4 Fernández Hernández Kevin Isaid, Flores Becerra Cid Héctor, Govea Mijares Jorge Luis ";
             // 
             // Form1
             // 
-            ClientSize = new Size(800, 450);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(789, 502);
             Controls.Add(tabControl1);
             Name = "Form1";
-            Text = "Sistema de Préstamos";
+            Text = "Form1";
+            Load += Form1_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -1812,44 +1896,48 @@
 
         private TabControl tabControl1;
         private TabPage tabPage1;
-        private Label label7;
+        private TabPage txtResultadoUsuario;
+        private TabPage tabPage3;
+        private TabPage tabPage4;
+        private TabPage tabPage5;
+        private TabPage tabPage6;
+        private TabPage tabPage7;
+        private TabPage tabPage8;
+        private TabPage tabPage9;
+        private TabPage tabPage10;
         private GroupBox groupBox1;
+        private TextBox txtIdAdmin;
         private Label label6;
+        private TextBox txtRutaImagenUsuario;
         private Label label1;
+        private TextBox txtNombreUsuario;
         private Label label5;
         private TextBox txtNombreAdmin;
-        private TextBox txtIdAdmin;
         private TextBox txtCorreoAdmin;
         private Label label4;
         private Label label2;
         private Label label3;
-        private TextBox txtResultadoAdmin;
+        private CheckBox chkEstadoAdmin;
+        private Label label7;
+        private Button btnGuardarAdmin;
         private TextBox txtRutaImagenAdmin;
         private TextBox txtContrasenaAdmin;
-        private Button btnGuardarAdmin;
-        private CheckBox chkEstadoAdmin;
-        private TabPage txtResultadoUsuario;
+        private TextBox txtResultadoAdmin;
         private GroupBox groupBox2;
+        private Label label13;
+        private CheckBox chkEstadoUsuario;
         private Label label11;
         private Label label12;
         private Label label10;
-        private TextBox txtRutaImagenUsuario;
         private ComboBox cmbCarrera;
-        private TextBox txtNombreUsuario;
         private Label label9;
         private TextBox txtNumeroEstudiante;
         private Label label8;
         private TextBox txtIdUsuario;
-        private Label label13;
-        private CheckBox chkEstadoUsuario;
         private Button btnGuardarUsuario;
         private TextBox txtResultadoUsuario1;
         private Label label14;
-        private TabPage tabPage3;
-        private TextBox txtResultadoMaterial;
         private GroupBox groupBox3;
-        private Label label20;
-        private CheckBox chkEstadoMaterial;
         private Label label19;
         private TextBox txtRutaImagenMaterial;
         private Label label15;
@@ -1859,117 +1947,120 @@
         private Label label16;
         private TextBox txtIdMaterial;
         private Label label17;
+        private CheckBox chkEstadoMaterial;
+        private Label label20;
+        private TextBox txtResultadoMaterial;
         private Button btnGuardarMaterial;
-        private TabPage tabPage4;
+        private TextBox txtResultadoRecreativo;
         private Label label21;
         private GroupBox groupBox4;
-        private Label label26;
-        private Label label25;
-        private Label label24;
-        private Label label23;
-        private Label label22;
+        private Label label27;
+        private CheckBox chkEstadoRecreativo;
         private TextBox txtRutaImagenRecreativo;
         private TextBox txtModeloRecreativo;
         private TextBox txtNombreRecreativo;
         private TextBox txtNumeroRecreativo;
         private TextBox txtIdRecrea;
+        private Label label26;
+        private Label label25;
+        private Label label24;
+        private Label label23;
+        private Label label22;
         private Button btnGuardarRecreativo;
-        private Label label27;
-        private CheckBox chkEstadoRecreativo;
-        private TextBox txtResultadoRecreativo;
-        private TabPage tabPage5;
+        private TextBox txtResultadoPrestamo;
         private GroupBox groupBox5;
-        private Label label28;
+        private TextBox txtIdPrestamo;
         private Label label33;
         private Label label32;
         private Label label31;
         private Label label30;
         private Label label29;
+        private Label label28;
+        private Button btnGuardarPrestamo;
+        private CheckBox chkEstadoPrestamo;
         private DateTimePicker dtpFechaDevolucion;
         private DateTimePicker dtpFechaPrestamo;
         private TextBox txtRutaImagenPrestamo;
-        private TextBox txtIdPrestamo;
-        private CheckBox chkEstadoPrestamo;
-        private Button btnGuardarPrestamo;
-        private TextBox txtResultadoPrestamo;
-        private TextBox txtIdElementoPrestamo;
-        private Label label35;
         private TextBox txtIdUsuarioPrestamo;
         private Label label34;
-        private TabPage tabPage6;
+        private Label label35;
+        private TextBox txtIdElementoPrestamo;
         private GroupBox groupBox6;
         private Label label36;
+        private TextBox txtResultadoDevolucion;
+        private CheckBox chkEstadoDevolucion;
+        private DateTimePicker dtpDevolucionReal;
+        private TextBox txtRutaImagenDevolucion;
+        private TextBox txtIdDevolucion;
         private Label label40;
         private Label label39;
         private Label label38;
         private Label label37;
         private Button btnGuardarDevolucion;
-        private CheckBox chkEstadoDevolucion;
-        private DateTimePicker dtpDevolucionReal;
-        private TextBox txtRutaImagenDevolucion;
-        private TextBox txtIdDevolucion;
-        private TextBox txtResultadoDevolucion;
-        private TabPage tabPage7;
+        private TextBox txtResultadoApartado;
         private GroupBox groupBox7;
-        private Label label41;
-        private Label label46;
-        private Label label45;
-        private Label label44;
-        private Label label43;
-        private Label label42;
-        private Button btnGuardarApartado;
         private CheckBox chkEstadoApartado;
         private TextBox txtRutaImagenApartado;
         private DateTimePicker dtpFechaReserva;
         private DateTimePicker dtpFechaSolicitud;
         private TextBox txtIdApartado;
-        private TextBox txtResultadoApartado;
-        private TabPage tabPage8;
+        private Label label46;
+        private Label label45;
+        private Label label44;
+        private Label label43;
+        private Label label42;
+        private Label label41;
+        private Button btnGuardarApartado;
+        private ListBox listBoxColaApartados;
+        private Button btnAtender;
+        private Button btnVaciarCola;
+        private Label labelCantidadApartados;
+        private Label labelSiguienteApartado;
         private GroupBox groupBox8;
-        private Label label47;
         private Label label52;
         private Label label48;
         private Label label51;
         private Label label49;
         private Label label50;
-        private Button btnGuardarReparacion;
+        private Label label47;
         private CheckBox chkEstadoReparacion;
         private TextBox txtRutaImagenReparacion;
         private DateTimePicker dtpFechaReparacion;
         private TextBox txtMaterialReparacion;
         private TextBox txtIdReparacion;
         private TextBox txtResultadoReparacion;
-        private TabPage tabPage9;
-        private GroupBox groupBox9;
+        private Button btnGuardarReparacion;
         private Label label53;
+        private TextBox txtResultadoUbicacion;
+        private GroupBox groupBox9;
+        private CheckBox chkEstadoUbicacion;
+        private TextBox txtRutaImagenUbicacion;
+        private TextBox txtAlmacen;
+        private TextBox txtEdificio;
+        private TextBox txtIdUbicacion;
         private Label label58;
         private Label label57;
         private Label label56;
         private Label label55;
         private Label label54;
         private Button button1;
-        private CheckBox chkEstadoUbicacion;
-        private TextBox txtRutaImagenUbicacion;
-        private TextBox txtAlmacen;
-        private TextBox txtEdificio;
-        private TextBox txtIdUbicacion;
-        private TextBox txtResultadoUbicacion;
-        private TabPage tabPage10;
         private GroupBox groupBox10;
-        private Label label59;
-        private Label label65;
-        private Label label64;
-        private Label label63;
         private Label label62;
+        private Label label60;
+        private Label label61;
+        private Label label59;
+        private TextBox txtResultadoSancion;
+        private TextBox txtRutaImagenSancion;
+        private Label label66;
         private CheckBox chkEstadoSancion;
         private CheckBox chkActivaPagada;
         private TextBox txtReporteSancion;
         private TextBox txtMontoSancion;
         private TextBox txtMotivoSancion;
         private TextBox txtIdSancion;
+        private Label label65;
+        private Label label64;
+        private Label label63;
         private Button btnGuardarSancion;
-        private TextBox txtRutaImagenSancion;
-        private Label label66;
-        private TextBox txtResultadoSancion;
     }
 }
