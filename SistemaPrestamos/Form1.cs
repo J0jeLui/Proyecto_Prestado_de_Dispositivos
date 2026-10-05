@@ -1,211 +1,521 @@
-using System;
-using System.Windows.Forms;
+using SistemaPresatamos.Models;
 
 namespace SistemaPresatamos
 {
     public partial class Form1 : Form
     {
+        // Mantiene la cola durante el formulario. 
+        private readonly Apartado _gestorApartados;
+
         public Form1()
         {
             InitializeComponent();
-            CargarOpcionesIniciales();
+            // Inicializa y muestra la cola vacía.
+            _gestorApartados = new Apartado();
+            ActualizarColaApartados();
         }
 
-        private void CargarOpcionesIniciales()
-        {
-            // Llenar el ComboBox de carreras en la pestaña de Usuarios
-            cmbCarrera.Items.Add("Ingeniería Informática");
-            cmbCarrera.Items.Add("Ingeniería en Sistemas");
-            cmbCarrera.Items.Add("Licenciatura en Administración");
-            cmbCarrera.Items.Add("Ingeniería Industrial");
-            if (cmbCarrera.Items.Count > 0)
-                cmbCarrera.SelectedIndex = 0;
-        }
-
-        // 1. Administrador
         private void btnGuardarAdmin_Click(object sender, EventArgs e)
         {
-            string id = txtIdAdmin.Text;
-            string correo = txtCorreoAdmin.Text;
-            string nombre = txtNombreAdmin.Text;
-            string pass = txtContrasenaAdmin.Text;
-            string ruta = txtRutaImagenAdmin.Text;
-            bool estado = chkEstadoAdmin.Checked;
+            try
+            {
+                // 1. Instanciamos el objeto de la clase Administrador (del namespace SistemaPresatamos.Models)
+                Administrador admin = new Administrador();
 
-            txtResultadoAdmin.Text = $"ADMINISTRADOR REGISTRADO:\r\n" +
-                                     $"ID: {id}\r\n" +
-                                     $"Correo: {correo}\r\n" +
-                                     $"Nombre: {nombre}\r\n" +
-                                     $"Ruta Imagen: {ruta}\r\n" +
-                                     $"Estado: {(estado ? "Disponible" : "No disponible")}";
+                // 2. Capturamos los datos de la Vista (controles) y los asignamos a las propiedades del Modelo.
+                // Aquí es donde las validaciones de tus propiedades (get/set) entran en acción automáticamente.
+                admin.Id = int.Parse(txtIdAdmin.Text);
+                admin.Correo = txtCorreoAdmin.Text;
+                admin.Nombre = txtNombreAdmin.Text;
+                admin.Contrasena = txtContrasenaAdmin.Text;
+                admin.RutaImagen = txtRutaImagenAdmin.Text; // Asegúrate de que el nombre del TextBox coincida con tu diseño
+                admin.EsActivo = chkEstadoAdmin.Checked;
+
+                // 3. Ejecutamos la función de negocio del modelo
+                bool esValido = admin.ValidarCredenciales();
+
+                // 4. Desplegamos el resultado en la sección de salida (puedes usar un TextBox multilínea llamado txtResultadoAdmin)
+                txtResultadoAdmin.Text = "=== DATOS REGISTRADOS CORRECTAMENTE ===" + Environment.NewLine +
+                                         admin.ToString() + Environment.NewLine +
+                                         $"Estado de validación de credenciales: {(esValido ? "Aprobado / Activo" : "Rechazado")}";
+            }
+            catch (FormatException)
+            {
+                // Se activa si escriben letras en campos que piden números enteros (como el ID)
+                MessageBox.Show("Error de formato: Por favor, introduce un número válido en el campo ID.",
+                                "Error de captura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                // Se activa cuando el Modelo rechaza un dato (ej. correo sin '@', contraseña menor a 6 caracteres, ID negativo)
+                MessageBox.Show(ex.Message,
+                                "Validación de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                // Cualquier otro error imprevisto
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // 2. Usuario
         private void btnGuardarUsuario_Click(object sender, EventArgs e)
         {
-            string id = txtIdUsuario.Text;
-            string numEstudiante = txtNumeroEstudiante.Text;
-            string nombre = txtNombreUsuario.Text;
-            string carrera = cmbCarrera.SelectedItem?.ToString() ?? "";
-            string ruta = txtRutaImagenUsuario.Text;
-            bool estado = chkEstadoUsuario.Checked;
+            try
+            {
+                // 1. Instanciamos el modelo Usuario
+                Usuario usuario = new Usuario();
 
-            txtResultadoUsuario1.Text = $"USUARIO REGISTRADO:\r\n" +
-                                        $"ID Usuario: {id}\r\n" +
-                                        $"No. Estudiante: {numEstudiante}\r\n" +
-                                        $"Nombre: {nombre}\r\n" +
-                                        $"Carrera: {carrera}\r\n" +
-                                        $"Ruta Imagen: {ruta}\r\n" +
-                                        $"Estado: {(estado ? "Activo" : "Inactivo")}";
+                // 2. Capturamos los datos desde los controles de la Vista
+                usuario.Id = int.Parse(txtIdUsuario.Text);
+                usuario.NumeroEstudiante = txtNumeroEstudiante.Text;
+                usuario.Nombre = txtNombreUsuario.Text;
+
+                // Obtenemos la opción seleccionada del ComboBox asegurándonos de que haya una elegida
+                if (cmbCarrera.SelectedItem != null)
+                {
+                    usuario.Carrera = cmbCarrera.SelectedItem?.ToString() ?? string.Empty;
+                }
+                else
+                {
+                    throw new ArgumentException("Debe seleccionar una carrera válida del listado.");
+                }
+
+                usuario.RutaImagen = txtRutaImagenUsuario.Text;
+                usuario.EsActivo = chkEstadoUsuario.Checked;
+
+                // 3. Desplegamos el resultado (puedes tener un TextBox multilínea llamado txtResultadoUsuario)
+                txtResultadoUsuario1.Text = "=== USUARIO REGISTRADO EXITOSAMENTE ===" + Environment.NewLine +
+                                           usuario.ToString() + Environment.NewLine +
+                                           $"Carrera Asignada: {usuario.Carrera}";
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Por favor, introduce un formato numérico válido en el ID de usuario.",
+                                "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                // Ataja cualquier regla de validación encapsulada en las propiedades de tu modelo
+                MessageBox.Show(ex.Message,
+                                "Validación de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // 3. Materiales
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            cmbCarrera.Items.Clear();
+            cmbCarrera.Items.Add("Ingeniería en Ciencias Computacionales");
+            cmbCarrera.Items.Add("Ingeniería en Energia");
+            cmbCarrera.Items.Add("Ingeniería en Nanotecnología");
+            cmbCarrera.Items.Add("Licenciatura en Administración");
+            cmbCarrera.Items.Add("Licenciatura en Contaduría Pública");
+
+            // Seleccionar la primera opción por defecto si hay elementos
+            if (cmbCarrera.Items.Count > 0)
+            {
+                cmbCarrera.SelectedIndex = 0;
+            }
+        }
+
         private void btnGuardarMaterial_Click(object sender, EventArgs e)
         {
-            string id = txtIdMaterial.Text;
-            string serie = txtNumeroSerie.Text;
-            string nombre = txtNombreMaterial.Text;
-            string ruta = txtRutaImagenMaterial.Text;
-            bool estado = chkEstadoMaterial.Checked;
+            try
+            {
+                // 1. Instanciamos el modelo Materiales
+                Materiales material = new Materiales();
 
-            txtResultadoMaterial.Text = $"MATERIAL REGISTRADO:\r\n" +
-                                        $"ID Material: {id}\r\n" +
-                                        $"No. Serie: {serie}\r\n" +
-                                        $"Nombre: {nombre}\r\n" +
-                                        $"Ruta Imagen: {ruta}\r\n" +
-                                        $"Estado: {(estado ? "En uso" : "Disponible")}";
+                // 2. Capturamos los datos desde los controles de la Vista
+                material.Id = int.Parse(txtIdMaterial.Text);
+                material.NumeroSerie = txtNumeroSerie.Text;
+                material.Nombre = txtNombreMaterial.Text;
+                material.RutaImagen = txtRutaImagenMaterial.Text;
+                material.EsActivo = chkEstadoMaterial.Checked;
+
+                // 3. Ejecutamos la función de negocio del modelo (Verificar disponibilidad)
+                bool estaDisponible = material.VerificarDisponibilidad();
+
+                // 4. Desplegamos el resultado en el TextBox multilínea
+                txtResultadoMaterial.Text = "=== MATERIAL REGISTRADO EXITOSAMENTE ===" + Environment.NewLine +
+                                            material.ToString() + Environment.NewLine +
+                                            $"¿Listo para préstamo?: {(estaDisponible ? "Sí (Disponible)" : "No (No disponible)")}";
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Por favor, introduce un formato numérico válido en el ID del material.",
+                                "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                // Ataja las validaciones del modelo (ej. número de serie vacío o ID negativo)
+                MessageBox.Show(ex.Message,
+                                "Validación de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // 4. Recreativos
         private void btnGuardarRecreativo_Click(object sender, EventArgs e)
         {
-            string id = txtIdRecrea.Text;
-            string numSerie = txtNumeroRecreativo.Text;
-            string nombre = txtNombreRecreativo.Text;
-            string modelo = txtModeloRecreativo.Text;
-            string ruta = txtRutaImagenRecreativo.Text;
-            bool estado = chkEstadoRecreativo.Checked;
+            try
+            {
+                // 1. Instanciamos el modelo Recreativo
+                Recreativo recreativo = new Recreativo();
 
-            txtResultadoRecreativo.Text = $"RECREATIVO REGISTRADO:\r\n" +
-                                          $"ID: {id}\r\n" +
-                                          $"No. Serie/Código: {numSerie}\r\n" +
-                                          $"Nombre: {nombre}\r\n" +
-                                          $"Modelo: {modelo}\r\n" +
-                                          $"Ruta Imagen: {ruta}\r\n" +
-                                          $"Estado: {(estado ? "Activo" : "Inactivo")}";
+                // 2. Capturamos los datos desde los controles de la Vista
+                recreativo.Id = int.Parse(txtIdRecrea.Text);
+                recreativo.Numero = txtNumeroRecreativo.Text;
+                recreativo.Nombre = txtNombreRecreativo.Text;
+                recreativo.Modelo = txtModeloRecreativo.Text;
+                recreativo.RutaImagen = txtRutaImagenRecreativo.Text;
+                recreativo.EsActivo = chkEstadoRecreativo.Checked;
+
+                // 3. Ejecutamos la función de negocio del modelo (Validar disponibilidad)
+                bool disponible = recreativo.ValidarDisponibilidad();
+
+                // 4. Desplegamos el resultado en el TextBox multilínea
+                txtResultadoRecreativo.Text = "=== ARTÍCULO RECREATIVO REGISTRADO ===" + Environment.NewLine +
+                                              recreativo.ToString() + Environment.NewLine +
+                                              $"Estatus de disponibilidad: {(disponible ? "Disponible para préstamo" : "No disponible")}";
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Por favor, introduce un formato numérico válido en el ID recreativo.",
+                                "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                // Ataja las reglas de validación encapsuladas en el modelo (ej. campos vacíos o ID negativo)
+                MessageBox.Show(ex.Message,
+                                "Validación de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // 5. Préstamos
         private void btnGuardarPrestamo_Click(object sender, EventArgs e)
         {
-            string idPrestamo = txtIdPrestamo.Text;
-            string idUsuario = txtIdUsuarioPrestamo.Text;
-            string idElemento = txtIdElementoPrestamo.Text;
-            string fechaP = dtpFechaPrestamo.Value.ToShortDateString();
-            string fechaD = dtpFechaDevolucion.Value.ToShortDateString();
-            string ruta = txtRutaImagenPrestamo.Text;
-            bool estado = chkEstadoPrestamo.Checked;
+            try
+            {
+                // 1. Instanciamos el modelo Prestamo
+                Prestamo prestamo = new Prestamo();
 
-            txtResultadoPrestamo.Text = $"PRÉSTAMO REGISTRADO:\r\n" +
-                                        $"ID Préstamo: {idPrestamo}\r\n" +
-                                        $"ID Usuario: {idUsuario}\r\n" +
-                                        $"ID Elemento: {idElemento}\r\n" +
-                                        $"Fecha Préstamo: {fechaP}\r\n" +
-                                        $"Fecha Devolución: {fechaD}\r\n" +
-                                        $"Ruta Imagen: {ruta}\r\n" +
-                                        $"Estado: {(estado ? "Activo" : "Finalizado")}";
+                // 2. Capturamos los datos básicos desde los controles
+                prestamo.Id = int.Parse(txtIdPrestamo.Text);
+                prestamo.IdUsuario = int.Parse(txtIdUsuarioPrestamo.Text);
+                prestamo.IdElemento = int.Parse(txtIdElementoPrestamo.Text);
+
+                // 3. Capturamos las fechas directamente desde los DateTimePicker
+                prestamo.FechaPrestamo = dtpFechaPrestamo.Value;
+                prestamo.FechaDevolucion = dtpFechaDevolucion.Value;
+
+                prestamo.EsActivo = chkEstadoPrestamo.Checked;
+
+                // 4. Validación básica de lógica de fechas (Regla de negocio adicional)
+                if (prestamo.FechaDevolucion < prestamo.FechaPrestamo)
+                {
+                    throw new ArgumentException("La fecha de devolución no puede ser anterior a la fecha de préstamo.");
+                }
+
+                // 5. Desplegamos el resultado en el TextBox multilínea
+                txtResultadoPrestamo.Text = "=== PRÉSTAMO REGISTRADO EXITOSAMENTE ===" + Environment.NewLine +
+                                            prestamo.ToString() + Environment.NewLine +
+                                            $"Fecha de Préstamo: {prestamo.FechaPrestamo.ToShortDateString()}" + Environment.NewLine +
+                                            $"Fecha de Devolución: {prestamo.FechaDevolucion.ToShortDateString()}";
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Por favor, introduce un formato numérico válido en los campos de ID.",
+                                "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                // Ataja las reglas de validación de los DateTimePicker o de los setters del modelo
+                MessageBox.Show(ex.Message,
+                                "Validación de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // 6. Devoluciones
         private void btnGuardarDevolucion_Click(object sender, EventArgs e)
         {
-            string id = txtIdDevolucion.Text;
-            string fechaReal = dtpDevolucionReal.Value.ToShortDateString();
-            string ruta = txtRutaImagenDevolucion.Text;
-            bool estado = chkEstadoDevolucion.Checked;
+            try
+            {
+                // 1. Instanciamos el modelo Devolucion
+                Devolucion devolucion = new Devolucion();
 
-            txtResultadoDevolucion.Text = $"DEVOLUCIÓN REGISTRADA:\r\n" +
-                                          $"ID Devolución: {id}\r\n" +
-                                          $"Fecha Real: {fechaReal}\r\n" +
-                                          $"Ruta Imagen: {ruta}\r\n" +
-                                          $"Estado: {(estado ? "Completado" : "Pendiente")}";
+                // 2. Capturamos los datos estrictamente desde los controles del mapa técnico
+                devolucion.Id = int.Parse(txtIdDevolucion.Text);
+                devolucion.DevolucionReal = dtpDevolucionReal.Value;
+                devolucion.RutaImagen = txtRutaImagenDevolucion.Text;
+                devolucion.EsActivo = chkEstadoDevolucion.Checked;
+
+                // 3. Desplegamos el resultado en el TextBox multilínea de la vista
+                txtResultadoDevolucion.Text = "=== DEVOLUCIÓN REGISTRADA EXITOSAMENTE ===" + Environment.NewLine +
+                                              devolucion.ToString() + Environment.NewLine +
+                                              $"Fecha Real: {devolucion.DevolucionReal.ToShortDateString()}";
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Por favor, introduce un formato numérico válido en el ID de devolución.",
+                                "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                // Ataja las reglas de validación encapsuladas en el modelo
+                MessageBox.Show(ex.Message,
+                                "Validación de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // 7. Apartados
         private void btnGuardarApartado_Click(object sender, EventArgs e)
         {
-            string id = txtIdApartado.Text;
-            string fechaSolicitud = dtpFechaSolicitud.Value.ToShortDateString();
-            string fechaReserva = dtpFechaReserva.Value.ToShortDateString();
-            string ruta = txtRutaImagenApartado.Text;
-            bool estado = chkEstadoApartado.Checked;
+            try
+            {
+                // 1. Instanciamos el modelo Apartado
+                Apartado apartado = new Apartado();
 
-            txtResultadoApartado.Text = $"APARTADO REGISTRADO:\r\n" +
-                                        $"ID Apartado: {id}\r\n" +
-                                        $"Fecha Solicitud: {fechaSolicitud}\r\n" +
-                                        $"Fecha Reserva: {fechaReserva}\r\n" +
-                                        $"Ruta Imagen: {ruta}\r\n" +
-                                        $"Estado: {(estado ? "Confirmado" : "Cancelado/Pendiente")}";
+                // 2. Capturamos los datos estrictamente desde los controles del mapa técnico
+                apartado.Id = int.Parse(txtIdApartado.Text);
+                apartado.FechaSolicitud = dtpFechaSolicitud.Value;
+                apartado.FechaReserva = dtpFechaReserva.Value;
+                apartado.RutaImagen = txtRutaImagenApartado.Text;
+                apartado.EsActivo = chkEstadoApartado.Checked;
+
+                // 3. Validación lógica de fechas (Validación de negocio adicional)
+                if (apartado.FechaReserva < apartado.FechaSolicitud)
+                {
+                    throw new ArgumentException("La fecha de reserva no puede ser anterior a la fecha de solicitud.");
+                }
+
+                if (_gestorApartados.ExisteEnCola(apartado.Id))
+                {
+                    throw new ArgumentException("Ya existe un apartado con ese ID en la cola de espera.");
+                }
+
+                // Agrega el apartado validado a la cola.
+                _gestorApartados.Encolar(apartado);
+
+                // 4. Desplegamos el resultado en el TextBox multilínea de la vista
+                txtResultadoApartado.Text = "=== APARTADO REGISTRADO EXITOSAMENTE ===" + Environment.NewLine +
+                                            apartado.ToString() + Environment.NewLine +
+                                            $"Fecha de Solicitud: {apartado.FechaSolicitud.ToShortDateString()}" + Environment.NewLine +
+                                            $"Fecha de Reserva: {apartado.FechaReserva.ToShortDateString()}";
+                ActualizarColaApartados();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Por favor, introduce un formato numérico válido en el ID de apartado.",
+                                "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                // Ataja las reglas de validación encapsuladas en el modelo o en las fechas
+                MessageBox.Show(ex.Message,
+                                "Validación de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // 8. Reparaciones
+        // Atiende primero la solicitud más antigua.
+        private void btnAtender_Click(object sender, EventArgs e)
+        {
+            if (_gestorApartados.ObtenerCantidadEnEspera() == 0)
+            {
+                ActualizarColaApartados();
+                return;
+            }
+
+            Apartado apartadoAtendido = _gestorApartados.AtenderSiguiente();
+            txtResultadoApartado.Text = "=== APARTADO ATENDIDO ===" + Environment.NewLine + apartadoAtendido.ToString();
+            ActualizarColaApartados();
+        }
+
+        // Vacía la cola y refresca vista.
+        private void btnVaciarCola_Click(object sender, EventArgs e)
+        {
+            _gestorApartados.VaciarCola();
+            txtResultadoApartado.Text = "La cola de apartados se ha vaciado.";
+            ActualizarColaApartados();
+        }
+
+        // Actualiza lista, contador y siguiente.
+        private void ActualizarColaApartados()
+        {
+            Apartado[] apartados = _gestorApartados.ObtenerApartadosEnEspera();
+            listBoxColaApartados.Items.Clear();
+            foreach (Apartado apartado in apartados)
+            {
+                listBoxColaApartados.Items.Add(apartado);
+            }
+
+            int cantidadEnEspera = _gestorApartados.ObtenerCantidadEnEspera();
+            labelCantidadApartados.Text = $"En espera: {cantidadEnEspera}";
+            btnAtender.Enabled = cantidadEnEspera > 0;
+            btnVaciarCola.Enabled = cantidadEnEspera > 0;
+
+            if (cantidadEnEspera == 0)
+            {
+                labelSiguienteApartado.Text = "Siguiente en ser atendido: ninguno";
+            }
+            else
+            {
+                Apartado siguiente = _gestorApartados.ConsultarSiguiente();
+                labelSiguienteApartado.Text = $"Siguiente en ser atendido: #{siguiente.Id}";
+            }
+        }
+
         private void btnGuardarReparacion_Click(object sender, EventArgs e)
         {
-            string id = txtIdReparacion.Text;
-            string material = txtMaterialReparacion.Text;
-            string fecha = dtpFechaReparacion.Value.ToShortDateString();
-            string ruta = txtRutaImagenReparacion.Text;
-            bool estado = chkEstadoReparacion.Checked;
+            try
+            {
+                // 1. Instanciamos el modelo Reparacion
+                Reparacion reparacion = new Reparacion();
 
-            txtResultadoReparacion.Text = $"REPARACIÓN REGISTRADA:\r\n" +
-                                          $"ID Reparación: {id}\r\n" +
-                                          $"Material: {material}\r\n" +
-                                          $"Fecha Reparación: {fecha}\r\n" +
-                                          $"Ruta Imagen: {ruta}\r\n" +
-                                          $"Estado: {(estado ? "En Proceso" : "Concluido")}";
+                // 2. Capturamos los datos estrictamente desde los controles del mapa técnico
+                reparacion.Id = int.Parse(txtIdReparacion.Text);
+                reparacion.Material = txtMaterialReparacion.Text;
+                reparacion.Fecha = dtpFechaReparacion.Value;
+                reparacion.RutaImagen = txtRutaImagenReparacion.Text;
+                reparacion.EsActivo = chkEstadoReparacion.Checked;
+
+                // 3. Desplegamos el resultado en el TextBox multilínea de la vista
+                txtResultadoReparacion.Text = "=== REPARACIÓN REGISTRADA EXITOSAMENTE ===" + Environment.NewLine +
+                                              reparacion.ToString() + Environment.NewLine +
+                                              $"Material en Reparación: {reparacion.Material}" + Environment.NewLine +
+                                              $"Fecha de Registro: {reparacion.Fecha.ToShortDateString()}";
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Por favor, introduce un formato numérico válido en el ID de reparación.",
+                                "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                // Ataja las reglas de validación encapsuladas en el modelo
+                MessageBox.Show(ex.Message,
+                                "Validación de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // 9. Ubicaciones
-        private void btnGuardarUbicacion_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            string id = txtIdUbicacion.Text;
-            string edificio = txtEdificio.Text;
-            string almacen = txtAlmacen.Text;
-            string ruta = txtRutaImagenUbicacion.Text;
-            bool estado = chkEstadoUbicacion.Checked;
+            try
+            {
+                // 1. Instanciamos el modelo Ubicacion
+                Ubicacion ubicacion = new Ubicacion();
 
-            txtResultadoUbicacion.Text = $"UBICACIÓN REGISTRADA:\r\n" +
-                                         $"ID Ubicación: {id}\r\n" +
-                                         $"Edificio: {edificio}\r\n" +
-                                         $"Almacén: {almacen}\r\n" +
-                                         $"Ruta Imagen: {ruta}\r\n" +
-                                         $"Estado: {(estado ? "Disponible" : "Ocupado")}";
+                // 2. Capturamos los datos estrictamente desde los controles del mapa técnico
+                ubicacion.Id = int.Parse(txtIdUbicacion.Text);
+                ubicacion.Edificio = txtEdificio.Text;
+                ubicacion.Almacen = txtAlmacen.Text;
+                ubicacion.RutaImagen = txtRutaImagenUbicacion.Text;
+                ubicacion.EsActivo = chkEstadoUbicacion.Checked;
+
+                // 3. Desplegamos el resultado en el TextBox multilínea de la vista
+                txtResultadoUbicacion.Text = "=== UBICACIÓN REGISTRADA EXITOSAMENTE ===" + Environment.NewLine +
+                                             ubicacion.ToString() + Environment.NewLine +
+                                             $"Edificio: {ubicacion.Edificio}" + Environment.NewLine +
+                                             $"Almacén: {ubicacion.Almacen}";
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Por favor, introduce un formato numérico válido en el ID de ubicación.",
+                                "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                // Ataja las reglas de validación encapsuladas en el modelo
+                MessageBox.Show(ex.Message,
+                                "Validación de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // 10. Sanciones
         private void btnGuardarSancion_Click(object sender, EventArgs e)
         {
-            string id = txtIdSancion.Text;
-            string motivo = txtMotivoSancion.Text;
-            string monto = txtMontoSancion.Text;
-            string reporte = txtReporteSancion.Text;
-            string ruta = txtRutaImagenSancion.Text;
-            bool activaPagada = chkActivaPagada.Checked;
-            bool estado = chkEstadoSancion.Checked;
+            try
+            {
+                // 1. Instanciamos el modelo Sancion
+                Sancion sancion = new Sancion();
 
-            txtResultadoSancion.Text = $"SANCIÓN REGISTRADA:\r\n" +
-                                       $"ID Sanción: {id}\r\n" +
-                                       $"Motivo: {motivo}\r\n" +
-                                       $"Monto: ${monto}\r\n" +
-                                       $"Reporte: {reporte}\r\n" +
-                                       $"Ruta Imagen: {ruta}\r\n" +
-                                       $"Condición: {(activaPagada ? "Pagada" : "Activa")}\r\n" +
-                                       $"Estado: {(estado ? "Vigente" : "Expirada")}";
-        }
+                // 2. Capturamos los datos estrictamente desde los controles del mapa técnico
+                sancion.Id = int.Parse(txtIdSancion.Text);
+                sancion.Motivo = txtMotivoSancion.Text;
+                sancion.Monto = decimal.Parse(txtMontoSancion.Text);
+                sancion.Reporte = txtReporteSancion.Text;
+                sancion.RutaImagen = txtRutaImagenSancion.Text;
+                sancion.ActivaPagada = chkActivaPagada.Checked;
+                sancion.EsActivo = chkEstadoSancion.Checked;
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
+                // 3. Validación de negocio opcional (ej. monto positivo)
+                if (sancion.Monto < 0)
+                {
+                    throw new ArgumentException("El monto de la sanción no puede ser negativo.");
+                }
 
+                // 4. Desplegamos el resultado en el TextBox multilínea de la vista
+                txtResultadoSancion.Text = "=== SANCIÓN REGISTRADA EXITOSAMENTE ===" + Environment.NewLine +
+                                   sancion.ToString() + Environment.NewLine +
+                                   $"Motivo: {sancion.Motivo}" + Environment.NewLine +
+                                   ("Monto:{sancion.Monto:N2}") + Environment.NewLine +
+                                   $"Reporte: {sancion.Reporte}" + Environment.NewLine +
+                                   $"Estado de Pago (Activa/Pagada): {sancion.ActivaPagada}";
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Por favor, introduce un formato numérico o decimal válido en los campos correspondientes (ID o Monto).",
+                                "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                // Ataja las reglas de validación encapsuladas en el modelo o validaciones lógicas
+                MessageBox.Show(ex.Message,
+                                "Validación de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
+
+
+
+
+   
