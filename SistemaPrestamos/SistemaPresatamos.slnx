@@ -2,5 +2,6 @@
   <Folder Name="/Data/">
     <File Path="ConexionBD.cs" />
   </Folder>
+  <Folder Name="/Elementos de la solución/" />
   <Project Path="SistemaPresatamos.csproj" />
 </Solution>

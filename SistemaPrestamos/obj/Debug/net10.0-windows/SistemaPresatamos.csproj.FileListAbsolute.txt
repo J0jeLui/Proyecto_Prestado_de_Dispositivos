@@ -28,3 +28,6 @@ C:\Users\hecto\OneDrive\Documentos\Programacion Orientada a Eventos\SistemaPrest
 C:\Users\hecto\OneDrive\Documentos\Programacion Orientada a Eventos\SistemaPrestamos\obj\Debug\net10.0-windows\SistemaPresatamos.pdb
 C:\Users\hecto\OneDrive\Documentos\Programacion Orientada a Eventos\SistemaPrestamos\obj\Debug\net10.0-windows\SistemaPresatamos.genruntimeconfig.cache
 C:\Users\hecto\OneDrive\Documentos\Programacion Orientada a Eventos\SistemaPrestamos\obj\Debug\net10.0-windows\ref\SistemaPresatamos.dll
+C:\Users\hecto\OneDrive\Documentos\Programacion Orientada a Eventos\SistemaPrestamos\obj\Debug\net10.0-windows\SistemaPresatamos.FrmBase.resources
+C:\Users\hecto\OneDrive\Documentos\Programacion Orientada a Eventos\SistemaPrestamos\obj\Debug\net10.0-windows\SistemaPresatamos.FrmUsuario.resources
+C:\Users\hecto\OneDrive\Documentos\Programacion Orientada a Eventos\SistemaPrestamos\obj\Debug\net10.0-windows\SistemaPresatamos.FrmAdministrador.resources
